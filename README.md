@@ -1,4 +1,4 @@
-# PK : 
+# Projekt kompetencyjny - katalog filmów (API + strona internetowa): 
 #### https://pk.rafalrozek.pl/
 projekt kompetencyjny
 
