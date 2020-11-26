@@ -12,7 +12,4 @@ urlpatterns = [
     path('films/', views.FilmList.as_view(), name='film-list'),
     path('films/<int:pk>/', views.FilmDetail.as_view(), name='film-detail'),
     path('films/<int:pk>/', views.FilmHighlight.as_view(), name='film-highlight'),
-
-    path('reviews/', views.ReviewList.as_view(), name='review-list'),
-    path('reviews/<int:pk>/', views.ReviewDetail.as_view(), name='review-detail'),
 ]

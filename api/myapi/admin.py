@@ -1,5 +1,4 @@
 from django.contrib import admin
-from .models import Film, Review
+from .models import Film
 
 admin.site.register(Film)
-admin.site.register(Review)
