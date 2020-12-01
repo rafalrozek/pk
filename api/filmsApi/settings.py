@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'rafalroz_pk',
         'USER': 'rafalroz_pk',
-        'PASSWORD': '*************',
+        'PASSWORD': 'zZV4H4ZBUab9D5dUQmlk',
         'HOST': 'rafalrozek.pl',
         'PORT': '3306',
     }
