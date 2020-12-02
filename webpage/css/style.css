@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+.card {
+  height: 100%;
+}
+
+.col {
+  margin: 10px;
+}
+
+.searched_title {
+  max-height: 100px;
+}
+
+.container {
+  padding: 10px 0px;
+}
+
+.random_movie {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+}
