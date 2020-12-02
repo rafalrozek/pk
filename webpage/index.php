@@ -34,7 +34,7 @@
             <a class="nav-link" href="#">Recenzje</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="account.php">Konto</a>
+            <a class="nav-link" href="panel.php">Panel Administratora</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" action="search.php" method="post">
