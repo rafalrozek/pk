@@ -1,5 +1,6 @@
 # Projekt kompetencyjny - katalog filmów (API + strona internetowa): 
 #### https://pk.rafalrozek.pl/
+##### https://api.rafalrozek.pl/
 projekt kompetencyjny
 
 :mortar_board: Rafał Rożek
