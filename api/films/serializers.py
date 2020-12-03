@@ -7,10 +7,12 @@ class FilmSerializer(serializers.ModelSerializer):
         model = Film
         fields = (
             'title',
-            'released',
             'runtime',
-            'genre',
-            'director',
+            'reviews',
+            'description',
+            'release_date',
+            'directorId',
+            'categoryId'
         )
 
 
