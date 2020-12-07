@@ -1,5 +1,4 @@
-<?php require_once 'config.php'; ?>
-
+<?php require_once("config.php") ?>
 <!doctype html>
 
 <html lang="pl">
@@ -13,8 +12,33 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="./css/style.css">
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+<style>
+.dataTables_filter {
+display: none;
+}
+.dataTables_length {
+display: none;
+}
+.dataTables_info {
+display: none;
+}
+</style>
+	<script>
+
+$(document).ready(function() {
+    $('#filmsTable').DataTable({
+    "pagingType": "simple_numbers" // "simple" option for 'Previous' and 'Next' buttons only
+  });
+} );
+
+</script>
 </head>
 
 <body>
@@ -28,7 +52,7 @@
       <div class="collapse navbar-collapse" id="navbarToggler">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="#">Filmy</a>
+            <a class="nav-link" href="films.php">Filmy</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Recenzje</a>
@@ -53,90 +77,10 @@
       <p class="card-text">Forrest Gump, 1994, 2 godz. 22 min.</p>
     </div>
   </div>
+</div>
 
-  <div class="container">
-    <h3 class="display-5">
-      Najnowsze filmy
-    </h3>
-    <hr class="col-xs-12">
-    <div class="row">
-      <?php
-        $sql = "SELECT movie_id, title, poster, release_date FROM movie ORDER BY release_date DESC LIMIT 4";
-        $result = $conn->query($sql);
-        if($result->num_rows > 0) {
-          while($row = $result->fetch_assoc()) {
-      ?>
-          <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-            <div class="card">
-              <img class="card-img-top" src=<?php echo $row["poster"]; ?> alt="Card image cap">
-              <div class="card-body">
-                <p class="card-text"><a href=movie.php?id=<?php echo $row["movie_id"]; ?>><?php echo $row["title"]; ?></a> <?php echo date('Y', strtotime($row["release_date"])); ?></p>
-              </div>
-            </div>
-          </div>
-      <?php
-          }
-        }
-      ?>
-    </div>
-  </div>
-
-  <div class="container">
-    <h3 class="display-5">
-      Ostatnio dodane filmy
-    </h3>
-    <hr class="col-xs-12">
-    <div class="row">
-      <?php
-        $sql = "SELECT movie_id, title, poster, release_date FROM movie ORDER BY added DESC LIMIT 4";
-        $result = $conn->query($sql);
-        if($result->num_rows > 0) {
-          while($row = $result->fetch_assoc()) {
-      ?>
-          <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-            <div class="card">
-              <img class="card-img-top" src=<?php echo $row["poster"]; ?> alt="Card image cap">
-              <div class="card-body">
-                <p class="card-text"><a href=movie.php?id=<?php echo $row["movie_id"]; ?>><?php echo $row["title"]; ?></a> <?php echo date('Y', strtotime($row["release_date"])); ?></p>
-              </div>
-            </div>
-          </div>
-      <?php
-          }
-        }
-      ?>
-    </div>
-  </div>
-
-
-  <div class="container">
-    <h3 class="display-5">
-      Najpopularniejsze filmy
-      <small class="text-muted">według naszych użytkowników</small>
-    </h3>
-    <hr class="col-xs-12">
-    <div class="row">
-      <?php
-        $sql = "SELECT movie_id, title, poster, release_date FROM movie LIMIT 4"; //todo sortowanie na podstawie recenzji użytkowników
-        $result = $conn->query($sql);
-        if($result->num_rows > 0) {
-          while($row = $result->fetch_assoc()) {
-      ?>
-          <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-            <div class="card">
-              <img class="card-img-top" src=<?php echo $row["poster"]; ?> alt="Card image cap">
-              <div class="card-body">
-                <p class="card-text"><a href=movie.php?id=<?php echo $row["movie_id"]; ?>><?php echo $row["title"]; ?></a> <?php echo date('Y', strtotime($row["release_date"])); ?></p>
-              </div>
-            </div>
-          </div>
-      <?php
-          }
-        }
-      ?>
-    </div>
-  </div>
 
 </main>
 </body>
+
 </html>
