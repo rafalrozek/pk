@@ -3,71 +3,26 @@
 
 <html lang="pl">
 <head>
-  <meta charset="utf-8">
+	<meta charset="utf-8">
 
-  <title>Baza filmów</title>
-  <meta name="description" content="Description">
-  <meta name="author" content="Author">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Baza filmów</title>
+	<meta name="description" content="Description">
+	<meta name="author" content="Author">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./css/style.css">
 
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
-<style>
-.dataTables_filter {
-display: none;
-}
-.dataTables_length {
-display: none;
-}
-.dataTables_info {
-display: none;
-}
-</style>
-	<script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 
-$(document).ready(function() {
-    $('#filmsTable').DataTable({
-    "pagingType": "simple_numbers" // "simple" option for 'Previous' and 'Next' buttons only
-  });
-} );
 
-</script>
 </head>
-
 <body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="index.php">Baza filmów</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarToggler">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="films.php">Filmy</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Recenzje</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="panel.php">Panel Administratora</a>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0" action="search.php" method="post">
-          <input class="form-control mr-sm-2" type="search" placeholder="Wprowadź tytuł filmu" name="searchedTitle">
-          <button class="btn btn-primary" type="submit">Szukaj</button>
-        </form>
-      </div>
-    </nav>
-  </header>
+<?php  include("header.php") ?>
 <main>
   <div class="container">
     <div class="card mb-3">
@@ -77,7 +32,48 @@ $(document).ready(function() {
       <p class="card-text">Forrest Gump, 1994, 2 godz. 22 min.</p>
     </div>
   </div>
+  <h2>Ostatnio dodane</h2>
+  <hr />
+    	<?php
+$query = "SELECT * FROM films_film ORDER BY id DESC LIMIT 4";
+
+if ($result = $conn->query($query)) {
+	
+    /* fetch associative array */
+    while ($row = $result->fetch_assoc()) {
+		
+?>
+<div class="container border mt-4">
+      <div class="row">
+		<div>
+		<div style="width: 150px; height: 150px; background-color: lightgray; display: block; float: left" class="my-3 m-3"> </div>
+		<div class="p-3" style="display: block">
+			<h3><a href="movie.php?id=<?=$row['id']?>"><?=$row['title']?></a></h3>
+			<hr />
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at nibh blandit, convallis sapien nec, faucibus sapien. Aenean fringilla, est in dignissim facilisis, ipsum neque rhoncus nisi, at dignissim odio metus eget tortor. </p>
+			<small>2020, Reż: Gall Anonim, 190 min.</small>
+        </div>
+		</div>
+       
+	 </div>
 </div>
+
+<?
+    }
+
+    /* free result set */
+    $result->free();
+}
+
+/* close connection */
+$conn->close();
+
+	?>
+  
+  
+  
+</div>
+  
 
 
 </main>

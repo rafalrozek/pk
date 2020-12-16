@@ -30,8 +30,14 @@ display: none;
 .dataTables_filter {
 text-align: left !important;
 }
+
+label {
+display: block;
+float: left;
+width: 100%;
+}
 </style>
-	<script>
+<script>
 
 $(document).ready(function() {
     $('#filmsTable').DataTable({
@@ -62,12 +68,13 @@ $(document).ready(function() {
 </head>
 
 <body>
+<?php  include("header.php") ?>
 <main>
 
   <div class="container">
-    <h3 class="display-5">
+    <h2>
 		Lista filmów
-    </h3>
+    </h2>
     <hr class="col-xs-12">
     <div class="row">
 
@@ -88,7 +95,7 @@ if ($result = $conn->query($query)) {
     /* fetch associative array */
     while ($row = $result->fetch_assoc()) {
 		echo "<tr>";
-		echo "<td>".$row['title']."</td>";
+		echo "<td><a href='movie.php?id=".$row['id']."'>".$row['title']."</a></td>";
 		echo "<td>".$row['runtime']."</td>";
 		echo "<td>".($row['reviews']/10)."</td>";
 		echo "</tr>";
@@ -99,7 +106,7 @@ if ($result = $conn->query($query)) {
 }
 
 /* close connection */
-$mysqli->close();
+$conn->close();
 
 	?>
 
