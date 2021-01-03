@@ -13,9 +13,8 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="./css/style.css">
 
-
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 
@@ -38,10 +37,10 @@
 $query = "SELECT * FROM films_film ORDER BY id DESC LIMIT 4";
 
 if ($result = $conn->query($query)) {
-	
+
     /* fetch associative array */
     while ($row = $result->fetch_assoc()) {
-		
+
 ?>
 <div class="container border mt-4">
       <div class="row">
@@ -54,7 +53,7 @@ if ($result = $conn->query($query)) {
 			<small>2020, Reż: Gall Anonim, 190 min.</small>
         </div>
 		</div>
-       
+
 	 </div>
 </div>
 
@@ -69,11 +68,11 @@ if ($result = $conn->query($query)) {
 $conn->close();
 
 	?>
-  
-  
-  
+
+
+
 </div>
-  
+
 
 
 </main>

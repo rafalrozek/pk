@@ -13,9 +13,8 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="./css/style.css">
 
-
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 
@@ -27,12 +26,12 @@
   <div class="container">
   <h2>10 najlepszych filmów według ocen</h2>
   <hr />
-  
+
     	<?php
 $query = "SELECT * FROM films_film ORDER BY reviews DESC LIMIT 10 ";
 $i = 1;
 if ($result = $conn->query($query)) {
-	
+
     /* fetch associative array */
     while ($row = $result->fetch_assoc()) {
 ?>
@@ -45,7 +44,7 @@ if ($result = $conn->query($query)) {
 			else echo '<h3 style="position: absolute; margin-top: -10px; margin-left: 10px"> '.$i.'.</h3>';
 	  ?>
 		<div>
-		
+
 		<div style="width: 150px; height: 150px; background-color: lightgray; display: block; float: left" class="my-3 m-3"> </div>
 		<div class="p-3" style="display: block">
 			<h3><a href="movie.php?id=<?=$row['id']?>"><?=$row['title']?></a></h3>
@@ -54,7 +53,7 @@ if ($result = $conn->query($query)) {
 			<small>2020, Reż: Gall Anonim, 190 min, Średnia ocen: <?=$row['reviews']/10 ?></small>
         </div>
 		</div>
-       
+
 	 </div>
 </div>
 
@@ -74,10 +73,10 @@ $conn->close();
 
 
 </div>
-  
+
 
   </div>
-  
+
 
 
 </main>

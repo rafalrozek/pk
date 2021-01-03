@@ -15,8 +15,8 @@
 
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 <style>
@@ -44,23 +44,23 @@ $(document).ready(function() {
 		"dom": '<"top"f>rt<"bottom"p><"clear">',
     "pagingType": "simple_numbers", // "simple" option for 'Previous' and 'Next' buttons only
 	"pageLength": 20,
-	
+
 	"oLanguage": {
 
 		"sSearch": "Wyszukaj",
 		"sZeroRecords": "Brak wyników :(",
-		
+
 		"oPaginate":{
 			"sNext": "Następna",
 			"sPrevious" : "Poprzednia"
 		}
-	
+
 
 }
   });
 
 
-} 
+}
 
 );
 
@@ -91,7 +91,7 @@ $(document).ready(function() {
 $query = "SELECT * FROM films_film ";
 
 if ($result = $conn->query($query)) {
-	
+
     /* fetch associative array */
     while ($row = $result->fetch_assoc()) {
 		echo "<tr>";

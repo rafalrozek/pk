@@ -13,9 +13,8 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="./css/style.css">
 
-
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 
@@ -31,7 +30,7 @@
 $query = "SELECT * FROM films_film WHERE id = ".$_GET['id']." LIMIT 1";
 
 if ($result = $conn->query($query)) {
-	
+
     /* fetch associative array */
     while ($row = $result->fetch_assoc()) {
 ?>
@@ -48,7 +47,7 @@ if ($result = $conn->query($query)) {
 			</div>
         </div>
 		</div>
-       
+
 	 </div>
 </div>
 
