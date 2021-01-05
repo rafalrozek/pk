@@ -23,14 +23,30 @@
 <body>
 <?php  include("header.php") ?>
 <main>
-  <div class="container">
+    <div class="container">
+
+		<?php
+			$query = "SELECT * FROM `films_film` WHERE id=(SELECT MAX(id) FROM `films_film`)";
+			if ($result = $conn->query($query)) {
+				$row = $result->fetch_assoc();
+				$last_id = $row['id'];
+			}
+			$randomFilmId = rand(1, $last_id);
+			$query = "SELECT * FROM films_film where id=" . $randomFilmId;
+			if ($result = $conn->query($query)) {
+				$row = $result->fetch_assoc();
+		?>
     <div class="card mb-3">
-    <img class="card-img-top random_movie" src="images/background.jpg" height="400" alt="Card image cap">
+    <div class="card-img-top random_movie"  style="height: 300px; background-color: lightgray;" alt="Card image cap"></div>
     <div class="card-body">
-      <h5 class="card-title"><a href="movie.php?id=4">Forrest Gump</a></h5>
-      <p class="card-text">Forrest Gump, 1994, 2 godz. 22 min.</p>
+      <h5 class="card-title"><a href="movie.php?id=<?=$row['id']?>"><?=$row['title']?></a></h5>
+      <p class="card-text"><?=$row['release_date']?>, <?=$row['runtime']?> min</p>
     </div>
   </div>
+	<?php
+		$result->free();
+		}
+	?>
   <h2>Ostatnio dodane</h2>
   <hr />
     	<?php
