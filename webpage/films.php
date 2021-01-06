@@ -21,21 +21,6 @@
 <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 <style>
 
-.dataTables_length {
-display: none;
-}
-.dataTables_info {
-display: none;
-}
-.dataTables_filter {
-text-align: left !important;
-}
-
-label {
-display: block;
-float: left;
-width: 100%;
-}
 </style>
 <script>
 
@@ -82,13 +67,14 @@ $(document).ready(function() {
   <thead>
     <tr>
       <th class="th-sm">Tytuł</th>
+      <th class="th-sm">Reżyseria</th>
       <th class="th-sm">Długość (minuty)</th>
       <th class="th-sm">Średnia ocen</th>
     </tr>
   </thead>
   <tbody>
   	<?php
-$query = "SELECT * FROM films_film ";
+$query = "SELECT * FROM films_film, directors where films_film.directorId = directors.directorId";
 
 if ($result = $conn->query($query)) {
 
@@ -96,6 +82,7 @@ if ($result = $conn->query($query)) {
     while ($row = $result->fetch_assoc()) {
 		echo "<tr>";
 		echo "<td><a href='movie.php?id=".$row['id']."'>".$row['title']."</a></td>";
+		echo "<td>".$row['name']."</td>";
 		echo "<td>".$row['runtime']."</td>";
 		echo "<td>".($row['reviews']/10)."</td>";
 		echo "</tr>";
