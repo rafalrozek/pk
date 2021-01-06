@@ -20,7 +20,21 @@
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 <style>
+.dataTables_length {
+display: none;
+}
+.dataTables_info {
+display: none;
+}
+.dataTables_filter {
+text-align: left !important;
+}
 
+label {
+display: block;
+float: left;
+width: 100%;
+}
 </style>
 <script>
 
